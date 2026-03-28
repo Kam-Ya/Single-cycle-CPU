@@ -7,7 +7,7 @@ module LR (input addr [0:7], output past[0:7])
 	end else 
 		if (keep)
 			past <= keep;
-			keep <= b'800000000;
+			keep <= 8'b00000000;
 		end
 	end
 
