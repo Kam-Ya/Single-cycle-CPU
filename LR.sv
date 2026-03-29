@@ -1,0 +1,6 @@
+module LR (input addr [0:7], output past[0:7], input write);
+
+	reg keep [0:7];
+	
+
+endmodule

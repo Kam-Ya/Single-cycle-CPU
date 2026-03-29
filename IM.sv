@@ -1,4 +1,4 @@
-module IM(input counter [0:7], output instruction[0:7])
+module IM(input [0:7] counter , output [0:7] instruction);
 
 	reg [7:0] mem[255:0];
 
@@ -6,7 +6,7 @@ module IM(input counter [0:7], output instruction[0:7])
 	// it
 	
 
-	assign instruction <= mem[counter];
+	assign instruction = mem[counter];
 	
 
 endmodule
