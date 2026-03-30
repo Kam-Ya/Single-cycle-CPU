@@ -19,18 +19,19 @@ module DM (input [0:7]inA , input [0:7]alu , input write, input clk, output [7:0
 			if (write) begin
 				mem[inA] <= alu;
 			end
-			on = 1'b0;
-			slow = 20'b00000000000000000000;
 		end
 	end
 
 // also to slow clock
-	always @(posedge clk) begin
+	always @(negedge clk) begin
 		if (on == 1'b0) begin
 			slow = slow + 1'b1;
 			if (slow[19] == 1) begin
 				on = 1'b1;
+				slow = 20'b00000000000000000000;
 			end
+		end else begin
+			on = !on;
 		end
 	end
 

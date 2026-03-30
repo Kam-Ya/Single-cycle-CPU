@@ -1,4 +1,4 @@
-module ALU (input [0:3]Op, input [0:16]inA, input [0:16]inB, output [0:16]out, output lights);
+module ALU (input [0:3]Op, input [0:7]inA, input [0:7]inB, output [0:16]out, output lights);
 	
 	assign out = (Op == 4'b0001) ? inA + inB  :
 			(Op == 4'b0010) ? inA - inB : 

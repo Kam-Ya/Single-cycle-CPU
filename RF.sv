@@ -21,19 +21,22 @@ module RF(input [1:0]Rb , input [3:2]Ra, input [7:0]write, output [7:0]outA, out
 			if (regWrite) begin
 				register[Ra] = write; 
 			end
-			on = 1'b0;
-			slow = 20'b00000000000000000000;
 		end
 	end
 
 	// also to slow clock
-	always @(posedge clk) begin
+	always @(negedge clk) begin
 		if (on == 1'b0) begin
 			slow = slow + 1'b1;
 			if (slow[19] == 1) begin
-				on = 1'b1;
+				on = !on;
+				slow = 20'b00000000000000000000;
 			end
+		end else begin
+			on = !on;
 		end
 	end
+	
+
 
 endmodule
